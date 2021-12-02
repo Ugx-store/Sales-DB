@@ -3,15 +3,17 @@ using System;
 using DL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DL.Migrations
 {
     [DbContext(typeof(SalesDbContext))]
-    partial class SalesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211201164736_SalesDbMigration2")]
+    partial class SalesDbMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,9 +31,6 @@ namespace DL.Migrations
                     b.Property<string>("BuyerName")
                         .HasColumnType("text");
 
-                    b.Property<long>("BuyerPhoneNumber")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("CartDateTime")
                         .HasColumnType("timestamp without time zone");
 
@@ -46,9 +45,6 @@ namespace DL.Migrations
 
                     b.Property<string>("SellerName")
                         .HasColumnType("text");
-
-                    b.Property<long>("SellerPhoneNumber")
-                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

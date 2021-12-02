@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DL;
+using BL;
 
 namespace WebApi
 {
@@ -37,6 +38,9 @@ namespace WebApi
 
             services.AddDbContext<SalesDbContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("SalesDB")));
+
+            services.AddScoped<IDLRepo, DLRepo>();
+            services.AddScoped<IBLRepo, BLRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
